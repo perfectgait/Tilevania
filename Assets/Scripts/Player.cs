@@ -15,30 +15,34 @@ public class Player : MonoBehaviour
     // Cached component references
     Rigidbody2D rigidBody;
     Animator animator;
-    Collider2D collider2D;
+    CapsuleCollider2D bodyCollider2D;
+    BoxCollider2D feetCollider2D;
+    float gravityScaleAtStart;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        collider2D = GetComponent<Collider2D>();
+        bodyCollider2D = GetComponent<CapsuleCollider2D>();
+        feetCollider2D = GetComponent<BoxCollider2D>();
+        gravityScaleAtStart = rigidBody.gravityScale;
     }
 
     // Update is called once per frame
     void Update()
     {
         Run();
+        ClimbLadder();
         Jump();
         ChangeDirection();
-        ClimbLadder();
     }
 
     private void Run()
     {
         // Between -1 and +1
-        float controlThrow = Input.GetAxis("Horizontal");
-        Vector2 playerVelocity = new Vector2(controlThrow * runSpeed, rigidBody.velocity.y);
+        float horizontalAxis = Input.GetAxis("Horizontal");
+        Vector2 playerVelocity = new Vector2(horizontalAxis * runSpeed, rigidBody.velocity.y);
         rigidBody.velocity = playerVelocity;
 
         bool isRunning = HasHorizontalSpeed();
@@ -50,12 +54,16 @@ public class Player : MonoBehaviour
     {
         if (!IsOnLadder())
         {
+            animator.SetBool("IsClimbing", false);
+            rigidBody.gravityScale = gravityScaleAtStart;
+
             return;
         }
 
         float controlThrow = Input.GetAxis("Vertical");
         Vector2 climbVelocity = new Vector2(rigidBody.velocity.x, controlThrow * climbSpeed);
         rigidBody.velocity = climbVelocity;
+        rigidBody.gravityScale = 0;
 
         bool isClimbing = HasVerticalSpeed();
 
@@ -103,11 +111,16 @@ public class Player : MonoBehaviour
 
     private bool IsOnSolidGround()
     {
-        return collider2D.IsTouchingLayers(LayerMask.GetMask("Ground"));
+        return feetCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"));
     }
 
     private bool IsOnLadder()
     {
-        return collider2D.IsTouchingLayers(LayerMask.GetMask("Climbing"));
+        return feetCollider2D.IsTouchingLayers(LayerMask.GetMask("Climbing"));
+    }
+
+    private bool IsClimbingLadder()
+    {
+        return !IsOnSolidGround() && IsOnLadder();
     }
 }
