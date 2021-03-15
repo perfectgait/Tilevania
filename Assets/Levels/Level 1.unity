@@ -168,30 +168,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerLives: 3
---- !u!1 &144171606 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6488714129762589603, guid: c5752963a4f87499cb3c3867550cd4d2,
-    type: 3}
-  m_PrefabInstance: {fileID: 6488714129889130997}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &144171607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6488714129762589602, guid: c5752963a4f87499cb3c3867550cd4d2,
     type: 3}
   m_PrefabInstance: {fileID: 6488714129889130997}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &144171608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144171606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caacb814f9c1e4637afdc832b4181138, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &163588641
 GameObject:
   m_ObjectHideFlags: 0
@@ -15664,17 +15646,17 @@ PrefabInstance:
     - target: {fileID: 4629005824736277539, guid: 77060304ab0ee4bd5a9fe0c064b0175a,
         type: 3}
       propertyPath: orthographic size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4629005824736277724, guid: 77060304ab0ee4bd5a9fe0c064b0175a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.823946
+      value: -11.563078
       objectReference: {fileID: 0}
     - target: {fileID: 4629005824736277724, guid: 77060304ab0ee4bd5a9fe0c064b0175a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.654132
+      value: 4.654132
       objectReference: {fileID: 0}
     - target: {fileID: 4629005825393987848, guid: 77060304ab0ee4bd5a9fe0c064b0175a,
         type: 3}
