@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
             isAlive = false;
             animator.SetTrigger("IsDying");
             rigidBody.velocity = deathKick;
+            FindObjectOfType<GameSession>().PlayerDeath();
         }
     }
 
